@@ -8,6 +8,7 @@ import {
   Point,
 } from '@designable/shared'
 
+// 拖拽中自动滚动的逻辑实现
 export const useAutoScrollEffect = (engine: Engine) => {
   let xScroller: IAutoScrollBasicInfo = null
   let yScroller: IAutoScrollBasicInfo = null
@@ -51,6 +52,7 @@ export const useAutoScrollEffect = (engine: Engine) => {
     }
   }
 
+  //监听当是什么事件时，触发副作用处理
   engine.subscribeTo(DragStartEvent, (event) => {
     if (
       engine.cursor.type !== CursorType.Move &&

@@ -2,6 +2,7 @@ let IDX = 36,
   HEX = ''
 while (IDX--) HEX += IDX.toString(36)
 
+// 计算唯一性的节点id
 export function uid(len?: number) {
   let str = '',
     num = len || 11

@@ -15,6 +15,7 @@ interface ICoverRectProps {
   dropping?: boolean
 }
 
+// 拖拽的蓝色浮层
 const CoverRect: React.FC<ICoverRectProps> = (props) => {
   const prefix = usePrefix('aux-cover-rect')
   const rect = useValidNodeOffsetRect(props.node)

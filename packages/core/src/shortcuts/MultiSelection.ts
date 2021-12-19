@@ -15,6 +15,7 @@ export const PreventCommandX = new Shortcut({
   ],
 })
 
+// 全选
 export const SelectAllNodes = new Shortcut({
   codes: [
     [KeyCode.Meta, KeyCode.A],

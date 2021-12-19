@@ -21,6 +21,8 @@
 const NEWER = Symbol('newer')
 const OLDER = Symbol('older')
 
+// LRU 动态缓存算法
+
 function Entry(key: any, value: any) {
   this.key = key
   this.value = value

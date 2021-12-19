@@ -167,6 +167,7 @@ export class TreeNode {
     })
   }
 
+  // 每个节点都有独立的属性和配置
   get designerProps(): IDesignerProps {
     const behaviors = GlobalRegistry.getDesignerBehaviors(this)
     const designerProps: IDesignerProps = behaviors.reduce((buf, pattern) => {

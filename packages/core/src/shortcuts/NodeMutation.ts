@@ -1,7 +1,7 @@
 import { KeyCode, Shortcut, TreeNode } from '../models'
 
 /**
- * 快捷删除，快捷复制粘贴
+ * 快捷删除，快捷复制粘贴：兼容 Window 和 Mac
  */
 
 export const DeleteNodes = new Shortcut({

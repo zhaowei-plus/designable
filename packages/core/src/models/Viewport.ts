@@ -22,7 +22,7 @@ export interface IViewportProps {
 }
 
 /**
- * 视口模型
+ * 视口模型: Ifame的处理
  */
 export class Viewport {
   workspace: Workspace

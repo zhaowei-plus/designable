@@ -27,6 +27,7 @@ export class ViewportResizeDriver extends EventDriver<Engine> {
   }
 
   attach() {
+    // 判断是否是当前容器，其实就是判断是否是在iframe中
     if (this.contentWindow !== window) {
       this.addEventListener('resize', this.onResize)
     } else {

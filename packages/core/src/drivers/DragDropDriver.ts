@@ -15,9 +15,11 @@ export class DragDropDriver extends EventDriver<Engine> {
   startEvent: MouseEvent
 
   onMouseDown = (e: MouseEvent) => {
+    // 修饰符的处理
     if (e.button !== 0 || e.ctrlKey || e.metaKey) {
       return
     }
+    // 这里针对富文本编辑器的处理，跳出
     if (
       e.target['isContentEditable'] ||
       e.target['contentEditable'] === 'true'
@@ -25,9 +27,13 @@ export class DragDropDriver extends EventDriver<Engine> {
       return true
     }
     if (e.target?.['closest']?.('.monaco-editor')) return
+
+    // 数据标记
     GlobalState.startEvent = e
     GlobalState.dragging = false
     GlobalState.onMouseDownAt = Date.now()
+
+    // 这里需要处理 元素 dragable= true的注册处理
     this.batchAddEventListener('mouseup', this.onMouseUp)
     this.batchAddEventListener('dragend', this.onMouseUp)
     this.batchAddEventListener('dragstart', this.onStartDrag)
@@ -79,6 +85,7 @@ export class DragDropDriver extends EventDriver<Engine> {
     GlobalState.moveEvent = e
   }
 
+  // 右键处理不影响拖拽
   onContextMenuWhileDragging = (e: MouseEvent) => {
     e.preventDefault()
   }
@@ -88,6 +95,7 @@ export class DragDropDriver extends EventDriver<Engine> {
     GlobalState.startEvent = GlobalState.startEvent || e
     this.batchAddEventListener('dragover', this.onMouseMove)
     this.batchAddEventListener('mousemove', this.onMouseMove)
+    // 右键菜单的处理
     this.batchAddEventListener(
       'contextmenu',
       this.onContextMenuWhileDragging,
@@ -119,6 +127,7 @@ export class DragDropDriver extends EventDriver<Engine> {
   }
 
   attach() {
+    // 注册事件
     this.batchAddEventListener('mousedown', this.onMouseDown, true)
   }
 

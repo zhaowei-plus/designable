@@ -9,6 +9,7 @@ export interface IdleCallbackOptions {
   timeout?: number
 }
 
+// 类型支持提示：
 export const requestIdle = (
   callback: (params: IIdleDeadline) => void,
   options?: IdleCallbackOptions

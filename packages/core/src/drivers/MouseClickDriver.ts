@@ -42,6 +42,7 @@ export class MouseClickDriver extends EventDriver<Engine> {
   }
 
   attach() {
+    // 互斥处理
     this.addEventListener('click', this.onMouseClick, {
       mode: 'onlyChild',
     })

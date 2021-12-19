@@ -174,6 +174,7 @@ export class EventDriver<Engine extends Event = Event, Context = any>
       const container = constructor[EVENTS_ONCE_SYMBOL][type]
       if (!handler) {
         if (container) {
+          // 这里是针对事件注册的模式处理，当重复注册时的处理逻辑，用于处理跨iframe的事件处理
           if (options.mode === 'onlyChild') {
             if (container.contains(target)) {
               container.removeEventListener(
@@ -276,7 +277,7 @@ export class EventDriver<Engine extends Event = Event, Context = any>
   }
 }
 /**
- * 事件引擎
+ * 事件引擎：事件流管理，通过事件驱动与DOM交互，并且支持跨iframe
  */
 export class Event extends Subscribable<ICustomEvent<any>> {
   private drivers: IEventDriverClass<any>[] = []

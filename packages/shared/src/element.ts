@@ -70,6 +70,7 @@ export const calcElementOuterWidth = (
   )
 }
 
+// 计算元素是inline（左右布局）还是block（上下）：HTML的计算
 export const calcElementLayout = (element: Element) => {
   if (!element) return 'vertical'
   const parent = element.parentElement

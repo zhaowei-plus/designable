@@ -5,6 +5,7 @@ export type ElementResults = { current: Element[] | Element }
 const toArray = <T>(target: Iterable<T> | ArrayLike<T>) =>
   Array.from(target || [])
 
+// 性能优化：document.querySelect 抽象，避免每次查找都从树种查找
 export class Selector {
   private store: SelectorStore = new Map()
 
@@ -63,6 +64,7 @@ export class Selector {
     }
   }
 
+  // 从缓存中获取
   query(target: Element | HTMLDocument, selector: string) {
     const caches = this.store.get(selector)
     const results: ElementResults = { current: null }

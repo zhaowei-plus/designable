@@ -30,6 +30,7 @@ export const useDragDropEffect = (engine: Engine) => {
     engine.workbench.eachWorkspace((currentWorkspace) => {
       const operation = currentWorkspace.operation
 
+      // 基于 node id 来找到对应节点
       if (nodeId || outlineId || handlerId) {
         const node = engine.findNodeById(outlineId || nodeId || handlerId)
         if (node) {
@@ -41,6 +42,7 @@ export const useDragDropEffect = (engine: Engine) => {
           if (validSelected.some((selectNode) => selectNode === node)) {
             operation.setDragNodes(operation.sortNodes(validSelected))
           } else {
+            // setDragNodes 支持多个节点
             operation.setDragNodes([node])
           }
         }
@@ -71,7 +73,7 @@ export const useDragDropEffect = (engine: Engine) => {
       const dragNodes = operation.getDragNodes()
       if (!dragNodes.length) return
       const touchNode = tree.findById(outlineId || nodeId)
-      operation.dragWith(point, touchNode)
+      operation.dragWith(point, touchNode) // 渲染节点
     })
   })
 

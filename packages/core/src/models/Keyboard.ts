@@ -72,7 +72,9 @@ export class Keyboard {
     return Modifiers.some((modifier) => Shortcut.matchCode(modifier[1], code))
   }
 
+  // 快捷键
   handleModifiers(event: AbstractKeyboardEvent) {
+    // 基于序列计算
     Modifiers.forEach(([key, code]) => {
       if (event[key]) {
         if (!this.includes(code)) {

@@ -22,7 +22,7 @@ export class MouseMoveDriver extends EventDriver<Engine> {
 
   attach() {
     this.addEventListener('mousemove', this.onMouseMove, {
-      mode: 'onlyOne',
+      mode: 'onlyOne', // onlyOne 永远只注册一次
     })
   }
 

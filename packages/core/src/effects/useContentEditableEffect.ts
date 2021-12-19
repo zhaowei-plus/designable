@@ -51,6 +51,7 @@ function createCaretCache(el: Element) {
   }
 }
 
+// 这里做了节流处理，避免光标跳跃
 export const useContentEditableEffect = (engine: Engine) => {
   const globalState: GlobalState = {
     activeElements: new Map(),
@@ -116,6 +117,7 @@ export const useContentEditableEffect = (engine: Engine) => {
     this.textContent = text
   }
 
+  // 解决光标跳动的逻辑
   function findTargetNodeId(element: Element) {
     if (!element) return
     const nodeId = element.getAttribute(

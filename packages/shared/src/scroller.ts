@@ -12,6 +12,7 @@ export interface IAutoScrollBasicInfo {
   speed: number
 }
 
+// 提供拖拽自动滚动的能力
 export const calcAutoScrollBasicInfo = (
   point: IPoint,
   axis: 'x' | 'y',

@@ -35,6 +35,7 @@ export interface IPointToRectRelative {
   distance: number
 }
 
+// 判断是否在一个矩形内部 sensitive 表示是否敏感
 export function isPointInRect(point: IPoint, rect: IRect, sensitive = true) {
   const boundSensor = (value: number) => {
     if (!sensitive) return 0
@@ -60,6 +61,7 @@ export function getRectPoints(source: IRect) {
   return [p1, p2, p3, p4]
 }
 
+// 函数式
 export function isRectInRect(target: IRect, source: IRect) {
   const [p1, p2, p3, p4] = getRectPoints(source)
   return (
@@ -70,6 +72,7 @@ export function isRectInRect(target: IRect, source: IRect) {
   )
 }
 
+// 矩形是否存在比较差
 export function isCrossRectInRect(target: IRect, source: IRect) {
   const targetCenterPoint = new Point(
     target.x + target.width / 2,
@@ -125,6 +128,7 @@ export function calcQuadrantOfPonitToRect(point: IPoint, rect: IRect) {
   }
 }
 
+// 点到矩形的距离
 export function calcDistanceOfPointToRect(point: IPoint, rect: IRect) {
   let minX = Math.min(
     Math.abs(point.x - rect.x),
@@ -144,6 +148,7 @@ export function calcDistanceOfPointToRect(point: IPoint, rect: IRect) {
   return Math.sqrt(minX ** 2 + minY ** 2)
 }
 
+// 点到边的距离
 export function calcDistancePointToEdge(point: IPoint, rect: IRect) {
   const distanceTop = Math.abs(point.y - rect.y)
   const distanceBottom = Math.abs(point.y - (rect.y + rect.height))
@@ -152,6 +157,7 @@ export function calcDistancePointToEdge(point: IPoint, rect: IRect) {
   return Math.min(distanceTop, distanceBottom, distanceLeft, distanceRight)
 }
 
+// 判断点是否在矩形右下方
 export function isNearAfter(point: IPoint, rect: IRect, inline = false) {
   if (inline) {
     return (
@@ -180,6 +186,7 @@ export function calcRelativeOfPointToRect(
   }
 }
 
+//
 export function calcBoundingRect(rects: IRect[]) {
   if (!rects?.length) return
   if (rects?.length === 1 && !rects[0]) return
@@ -205,6 +212,7 @@ export function calcBoundingRect(rects: IRect[]) {
   return new DOMRect(minLeft, minTop, maxRight - minLeft, maxBottom - minTop)
 }
 
+// 求具体象限的算法：用于组件选择
 export function calcRectByStartEndPoint(
   startPoint: IPoint,
   endPoint: IPoint,

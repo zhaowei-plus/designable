@@ -93,7 +93,7 @@ export class Engine extends Event {
     drivers: [],
     rootComponentName: 'Root',
     sourceIdAttrName: 'data-designer-source-id',
-    nodeIdAttrName: 'data-designer-node-id',
+    nodeIdAttrName: 'data-designer-node-id', // 节点标识
     contentEditableAttrName: 'data-content-editable',
     contentEditableNodeIdAttrName: 'data-content-editable-node-id',
     clickStopPropagationAttrName: 'data-click-stop-propagation',

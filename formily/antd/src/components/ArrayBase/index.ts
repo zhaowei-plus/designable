@@ -3,12 +3,13 @@ import { createFieldSchema, createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 
+// 定义数组行为
 export const createArrayBehavior = (name: string) => {
   return createBehavior(
     {
       name,
       extends: ['Field'],
-      selector: (node) => node.props['x-component'] === name,
+      selector: (node) => node.props['x-component'] === name, // 当 x-compooent为特定向=值得时候执行后续的操作
       designerProps: {
         droppable: true,
         propsSchema: createFieldSchema(AllSchemas[name]),

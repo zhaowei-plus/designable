@@ -12,6 +12,8 @@ export const isFn = isType<(...args: any[]) => any>([
   'GeneratorFunction',
 ])
 export const isWindow = isType<Window>('Window')
+
+// 类型守护 is
 export const isHTMLElement = (obj: any): obj is HTMLElement => {
   return obj?.['nodeName'] || obj?.['tagName']
 }

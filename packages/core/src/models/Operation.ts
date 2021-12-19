@@ -46,18 +46,21 @@ export class Operation {
       ...this.engine.props.defaultComponentTree,
       operation: this,
     })
+    // 选区模块
     this.selection = new Selection({
       operation: this,
     })
     this.hover = new Hover({
       operation: this,
     })
+    // 可以理解为辅助线的管理模型
     this.outlineDragon = new Dragon({
       operation: this,
       sensitive: false,
       forceBlock: true,
       viewport: this.workspace.outline,
     })
+    // 可以理解为辅助线的管理模型
     this.viewportDragon = new Dragon({
       operation: this,
       viewport: this.workspace.viewport,
@@ -192,6 +195,7 @@ export class Operation {
     })
   }
 
+  // 复制节点，支持批量复制（内部排序等）
   cloneNodes(nodes: TreeNode[]) {
     const groups: { [parentId: string]: TreeNode[] } = {}
     const lastGroupNode: { [parentId: string]: TreeNode } = {}
@@ -266,6 +270,7 @@ export class Operation {
     })
   }
 
+  // 序列化和反序列化
   from(operation?: IOperation) {
     if (!operation) return
     if (operation.tree) {
